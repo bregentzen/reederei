@@ -43,3 +43,20 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 # TLS Certificates
 .certs/
+/.dockerignore
+/.mvn/wrapper/.gitignore
+/.gitignore
+/src/main/resources/application.properties
+/src/main/docker/Dockerfile.jvm
+/src/main/docker/Dockerfile.legacy-jar
+/src/main/docker/Dockerfile.native
+/src/main/docker/Dockerfile.native-micro
+/src/test/java/de/hsos/swa/reederei/ExampleResourceIT.java
+/src/test/java/de/hsos/swa/reederei/ExampleResourceTest.java
+/src/main/resources/import.sql
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/MavenWrapperDownloader.java
+/mvnw
+/mvnw.cmd
+/pom.xml
+/README.md
