@@ -3,21 +3,17 @@ package de.hsos.swa.reederei.auftragsmanagement.gateway.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
-import jakarta.persistence.TableGenerator;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
 
 @Entity(name="Auftrag")
 @Table(name="AUFTRAEGE")
-@NamedQuery(name = "AuftragJPAEntity.findByBeschreibung",
-        query = "SELECT a FROM Auftrag a WHERE a.beschreibung=:beschreibung")
+
+@NamedQueries(value = {
+        @NamedQuery(name = "AuftragJPAEntity.findByBeschreibung",
+                query = "SELECT a FROM Auftrag a WHERE a.beschreibung=:beschreibung"),
+        @NamedQuery(name = "AuftragJPAEntity.findById",
+        query = "select a from Auftrag a where a.id=:id")
+})
 @Cacheable(true)
 public class AuftragJPAEntity implements Serializable {
     @Id
