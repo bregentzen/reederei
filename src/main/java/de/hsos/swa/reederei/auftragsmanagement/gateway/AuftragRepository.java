@@ -34,7 +34,7 @@ public class AuftragRepository implements AuftragVerwaltung {
     }
 
     @Override
-    public Optional<Auftrag> getAuftrag(String id) {
+    public Optional<Auftrag> getAuftrag(Long id) {
         TypedQuery<AuftragJPAEntity> typedQuery =
                 this.entityManager.createNamedQuery("AuftragJPAEntity.findById", AuftragJPAEntity.class);
         typedQuery.setParameter("id", id);
@@ -50,8 +50,8 @@ public class AuftragRepository implements AuftragVerwaltung {
     }
 
     @Override
-    //TODO: wie soll geupdatet werden? Eingangsdatum auch ändern z.B.?
-    public Optional<Auftrag> updateAuftrag(String id, Auftrag auftrag) {
+    //TODO: wie soll geupdatet werden? Eingangsdatum auch ändern z.B.? DB: Nein ich bin dagegen, dass wir das Eingangsdatum ändern können.
+    public Optional<Auftrag> updateAuftrag(Long id, Auftrag auftrag) {
         AuftragJPAEntity foundAuftrag = this.entityManager.find(AuftragJPAEntity.class, id);
         if(foundAuftrag == null) {
             return Optional.empty();
@@ -63,6 +63,7 @@ public class AuftragRepository implements AuftragVerwaltung {
             if (mergedAuftrag != null && !mergedAuftrag.getBeschreibung().equals(auftrag.getBeschreibung())) {
                 return Optional.empty();
             }
+            assert mergedAuftrag != null;
             Auftrag mergedAuftragToReturn = this.fromDbEntityAuftrag(mergedAuftrag);
 
             return Optional.of(mergedAuftragToReturn);
@@ -74,7 +75,7 @@ public class AuftragRepository implements AuftragVerwaltung {
     }
 
     @Override
-    public boolean deleteAuftrag(String id) {
+    public boolean deleteAuftrag(Long id) {
         AuftragJPAEntity foundAuftrag = this.entityManager.find(AuftragJPAEntity.class, id);
         if(foundAuftrag == null) {
             return false;
@@ -86,6 +87,22 @@ public class AuftragRepository implements AuftragVerwaltung {
         } catch (IllegalArgumentException | TransactionRequiredException e) {
             System.err.println("Auftrag could not be deleted!!!");
             return false;
+        }
+    }
+
+    @Override
+    public Optional<Auftrag> createAuftrag(Auftrag auftrag) {
+        AuftragJPAEntity auftragEntity = new AuftragJPAEntity();
+        auftragEntity.setBeschreibung(auftrag.getBeschreibung());
+        auftragEntity.setEingangsdatum(auftrag.getEingangsdatum());
+        auftragEntity.setSchiffURL(auftrag.getSchiffURL());
+
+        try {
+            this.entityManager.persist(auftragEntity);
+            return Optional.of(fromDbEntityAuftrag(auftragEntity));
+        } catch (PersistenceException e) {
+            System.err.println("Auftrag konnte nicht estellt werden!");
+            return Optional.empty();
         }
     }
 

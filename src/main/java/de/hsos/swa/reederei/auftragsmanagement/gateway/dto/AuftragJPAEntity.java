@@ -12,7 +12,7 @@ import jakarta.persistence.*;
         @NamedQuery(name = "AuftragJPAEntity.findByBeschreibung",
                 query = "SELECT a FROM Auftrag a WHERE a.beschreibung=:beschreibung"),
         @NamedQuery(name = "AuftragJPAEntity.findById",
-        query = "select a from Auftrag a where a.id=:id")
+                query = "select a from Auftrag a where a.id=:id")
 })
 @Cacheable(true)
 public class AuftragJPAEntity implements Serializable {
