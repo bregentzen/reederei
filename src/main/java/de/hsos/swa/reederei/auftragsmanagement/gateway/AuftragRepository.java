@@ -93,6 +93,7 @@ public class AuftragRepository implements AuftragVerwaltung {
     @Override
     public Optional<Auftrag> createAuftrag(Auftrag auftrag) {
         AuftragJPAEntity auftragEntity = new AuftragJPAEntity();
+        auftragEntity.setId(auftrag.getId());
         auftragEntity.setBeschreibung(auftrag.getBeschreibung());
         auftragEntity.setEingangsdatum(auftrag.getEingangsdatum());
         auftragEntity.setSchiffURL(auftrag.getSchiffURL());
@@ -101,7 +102,7 @@ public class AuftragRepository implements AuftragVerwaltung {
             this.entityManager.persist(auftragEntity);
             return Optional.of(fromDbEntityAuftrag(auftragEntity));
         } catch (PersistenceException e) {
-            System.err.println("Auftrag konnte nicht estellt werden!");
+            System.err.println("Auftrag konnte nicht erstellt werden: " + e.getMessage());
             return Optional.empty();
         }
     }
