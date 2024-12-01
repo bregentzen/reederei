@@ -4,6 +4,7 @@ import de.hsos.swa.reederei.auftragsmanagement.entity.Auftrag;
 import de.hsos.swa.reederei.auftragsmanagement.entity.AuftragVerwaltung;
 import de.hsos.swa.reederei.auftragsmanagement.gateway.dto.AuftragJPAEntity;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.TransactionRequiredException;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @Transactional(value = Transactional.TxType.MANDATORY)
 public class AuftragRepository implements AuftragVerwaltung {
 
+    @Inject
     transient EntityManager entityManager;
 
     @Override

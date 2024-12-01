@@ -1,0 +1,84 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-12-01T20:08:15.000Z",
+  "__export_source": "insomnia.desktop.app:v2024.7.0",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "created": 0,
+      "description": "",
+      "modified": 0,
+      "name": "Reederei Project",
+      "parentId": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_1",
+      "created": 0,
+      "data": {},
+      "dataPropertyOrder": null,
+      "isPrivate": false,
+      "modified": 0,
+      "name": "Base Environment",
+      "parentId": "wrk_1",
+      "_type": "environment"
+    },
+    {
+      "_id": "fld_1",
+      "created": 0,
+      "description": "",
+      "modified": 0,
+      "name": "Reederei Requests",
+      "parentId": "wrk_1",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_1",
+      "created": 0,
+      "description": "",
+      "headers": [],
+      "method": "GET",
+      "modified": 0,
+      "name": "Get All Auftraege",
+      "parentId": "fld_1",
+      "parameters": [],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/auftraege",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2",
+      "created": 0,
+      "description": "",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "method": "POST",
+      "modified": 0,
+      "name": "Create Auftrag",
+      "parentId": "fld_1",
+      "parameters": [],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/auftraege",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"description\": \"New Auftrag\",\n  \"otherField\": \"value\"\n}"
+      },
+      "_type": "request"
+    }
+  ]
+}

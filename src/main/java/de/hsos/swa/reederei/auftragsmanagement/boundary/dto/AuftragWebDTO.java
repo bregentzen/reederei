@@ -7,6 +7,9 @@ public class AuftragWebDTO {
     private Date eingangsdatum;
     private String schiffURL;
 
+    public AuftragWebDTO(){
+    }
+
     public AuftragWebDTO(String beschreibung, Date eingangsdatum, String schiffURL) {
         this.beschreibung = beschreibung;
         this.eingangsdatum = eingangsdatum;

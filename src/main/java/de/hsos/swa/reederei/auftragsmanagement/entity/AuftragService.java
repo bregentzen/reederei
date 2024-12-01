@@ -4,6 +4,7 @@ import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTO;
 import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTOId;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
+import org.hibernate.internal.build.AllowSysOut;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class AuftragService {
 
     public AuftragWebDTOId createAuftrag(AuftragWebDTO auftrag) {
         Auftrag auftragEntity = toEntity(auftrag);
+        System.out.println(auftragEntity);
         Optional<Auftrag> createdAuftrag = auftragVerwaltung.createAuftrag(auftragEntity);
         return createdAuftrag.map(this::toDTOwithId).orElse(null);
     }

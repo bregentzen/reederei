@@ -2,6 +2,7 @@ package de.hsos.swa.reederei.auftragsmanagement.boundary;
 
 import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTOId;
 import de.hsos.swa.reederei.auftragsmanagement.entity.AuftragService;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -11,6 +12,7 @@ import jakarta.ws.rs.core.Response;
 @Path("/auftraege")
 public class AuftragIdResource {
 //TODO: Implement me
+    @Inject
     AuftragService auftragService;
 
     @GET

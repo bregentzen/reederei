@@ -29,6 +29,7 @@ public class AuftragResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     @Operation(summary = "Get all orders", description = "Retrieve all orders with optional filtering and pagination")
     @APIResponses(
             value = {
@@ -83,6 +84,12 @@ public class AuftragResource {
     )
     public Response createAuftrag(AuftragWebDTO auftragWebDTO, @Context UriInfo uriInfo) {
         AuftragWebDTOId newAuftrag = auftragService.createAuftrag(auftragWebDTO);
+
+        if (newAuftrag == null) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Unable to create Auftrag. Please try again later.")
+                    .build();
+        }
 
         String selfLink = uriInfo.getAbsolutePathBuilder().path(Long.toString(newAuftrag.getId())).build().toString();
         JsonObject responseJson = Json.createObjectBuilder()
