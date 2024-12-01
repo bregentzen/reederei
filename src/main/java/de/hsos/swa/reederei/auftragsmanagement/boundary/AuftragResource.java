@@ -91,6 +91,7 @@ public class AuftragResource {
                     .build();
         }
 
+        //TODO: Eingangsdatum als String oder Date?
         String eingangsdatumStr = newAuftrag.getEingangsdatum() != null ? newAuftrag.getEingangsdatum().toString() : "heute";
 
 
