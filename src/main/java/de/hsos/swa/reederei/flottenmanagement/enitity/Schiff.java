@@ -37,4 +37,13 @@ public class Schiff {
     public void setGebucht(boolean gebucht) {
         isGebucht = gebucht;
     }
+
+    @Override
+    public String toString() {
+        return "Schiff{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isGebucht=" + isGebucht +
+                '}';
+    }
 }

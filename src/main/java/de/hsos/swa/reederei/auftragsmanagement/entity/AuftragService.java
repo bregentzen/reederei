@@ -2,9 +2,12 @@ package de.hsos.swa.reederei.auftragsmanagement.entity;
 
 import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTO;
 import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTOId;
+import de.hsos.swa.reederei.shared.AuftragDTO;
+import de.hsos.swa.reederei.shared.SchiffDTO;
 import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
-import org.hibernate.internal.build.AllowSysOut;
+import jakarta.enterprise.event.Event;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -15,15 +18,28 @@ public class AuftragService {
     @Inject
     AuftragVerwaltung auftragVerwaltung;
 
+    @Inject
+    Event<AuftragDTO> auftragEvent;
+
     /*
     Methoden ohne ID
     */
 
     public AuftragWebDTOId createAuftrag(AuftragWebDTO auftrag) {
         Auftrag auftragEntity = toEntity(auftrag);
-        System.out.println(auftragEntity);
         Optional<Auftrag> createdAuftrag = auftragVerwaltung.createAuftrag(auftragEntity);
+
+        createdAuftrag.ifPresent(a -> {
+            auftragEvent.fire(new AuftragDTO(a.getId(), a.getBeschreibung(), "heute", a.getSchiffURL()));
+        });
+
+        createdAuftrag = auftragVerwaltung.getAuftrag(createdAuftrag.get().getId());
+
         return createdAuftrag.map(this::toDTOwithId).orElse(null);
+    }
+
+    public void onNewAuftrag(@Observes SchiffDTO schiffDTO) {
+        auftragVerwaltung.markShipAsBooked(schiffDTO.getAuftragId(), schiffDTO.getSchiffURL());
     }
 
     public Collection<AuftragWebDTOId> getAllAuftraegeDTO() {

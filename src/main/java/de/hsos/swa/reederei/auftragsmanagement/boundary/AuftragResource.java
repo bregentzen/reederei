@@ -90,10 +90,12 @@ public class AuftragResource {
                     .entity("Unable to create Auftrag. Please try again later.")
                     .build();
         }
+        System.out.println("newAuftrag: " + newAuftrag.getSchiffURL());
+
 
         //TODO: Eingangsdatum als String oder Date?
         String eingangsdatumStr = newAuftrag.getEingangsdatum() != null ? newAuftrag.getEingangsdatum().toString() : "heute";
-
+        //String eingangsdatumStr = newAuftrag.getEingangsdatum().toString();
 
         String selfLink = uriInfo.getAbsolutePathBuilder().path(Long.toString(newAuftrag.getId())).build().toString();
         JsonObject responseJson = Json.createObjectBuilder()

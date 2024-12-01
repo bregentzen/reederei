@@ -4,6 +4,9 @@ public class SchiffWebDTO {
     private String name;
     private boolean isGebucht;
 
+    public SchiffWebDTO(){
+    }
+
     public SchiffWebDTO(String name, boolean isGebucht) {
         this.name = name;
         this.isGebucht = isGebucht;

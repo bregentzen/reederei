@@ -76,7 +76,35 @@
       "url": "http://localhost:8080/auftraege",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"description\": \"New Auftrag\",\n  \"otherField\": \"value\"\n}"
+        "text": "{\n  \"beschreibung\": \"New Auftrag\",\n  \"eingangsdatum\": \"2024-12-01T00:00:00.000Z\",\n  \"schiffURL\": \"null\"\n}"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_3",
+      "created": 0,
+      "description": "",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "method": "POST",
+      "modified": 0,
+      "name": "Create Schiff",
+      "parentId": "fld_1",
+      "parameters": [],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/schiffe",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Neues Schiff\",\n  \"gebucht\": false\n}"
       },
       "_type": "request"
     }

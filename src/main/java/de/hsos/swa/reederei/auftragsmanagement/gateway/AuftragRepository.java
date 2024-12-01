@@ -108,6 +108,23 @@ public class AuftragRepository implements AuftragVerwaltung {
         }
     }
 
+    @Override
+    public void markShipAsBooked(Long auftragId, String schiffURL) {
+        AuftragJPAEntity foundAuftrag = this.entityManager.find(AuftragJPAEntity.class, auftragId);
+        if(foundAuftrag == null) {
+            System.out.println("Auftrag konnte nicht gefunden werden");
+            return;
+        }
+        foundAuftrag.setSchiffURL(schiffURL);
+        try {
+            this.entityManager.merge(foundAuftrag);
+            System.out.println("Schiff als gebucht markiert");
+        } catch (PersistenceException e) {
+            System.err.println("Schiff konnte nicht als gebucht markiert werden: " + e.getMessage());
+        }
+
+    }
+
     private Auftrag fromDbEntityAuftrag(AuftragJPAEntity auftrag) {
         return new Auftrag(auftrag.getId(), auftrag.getBeschreibung(), auftrag.getEingangsdatum(), auftrag.getSchiffURL());
     }

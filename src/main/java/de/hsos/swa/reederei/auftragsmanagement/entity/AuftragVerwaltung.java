@@ -11,5 +11,5 @@ public interface AuftragVerwaltung {
     Optional<Auftrag> updateAuftrag(Long id, Auftrag auftrag);
     boolean deleteAuftrag(Long id);
     Optional<Auftrag> createAuftrag(Auftrag auftrag);
-
+    void markShipAsBooked(Long auftragId, String schiffURL);
 }
