@@ -95,7 +95,6 @@ public class AuftragRepository implements AuftragVerwaltung {
     @Override
     public Optional<Auftrag> createAuftrag(Auftrag auftrag) {
         AuftragJPAEntity auftragEntity = new AuftragJPAEntity();
-        auftragEntity.setId(auftrag.getId());
         auftragEntity.setBeschreibung(auftrag.getBeschreibung());
         auftragEntity.setEingangsdatum(auftrag.getEingangsdatum());
         auftragEntity.setSchiffURL(auftrag.getSchiffURL());

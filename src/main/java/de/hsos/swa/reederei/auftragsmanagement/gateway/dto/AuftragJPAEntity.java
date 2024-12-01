@@ -31,7 +31,7 @@ public class AuftragJPAEntity implements Serializable {
     private String schiffURL;
 
     @Version
-    private Long versionsnr;
+    private Long versionsnr = 0L;
 
     public AuftragJPAEntity() {
     }

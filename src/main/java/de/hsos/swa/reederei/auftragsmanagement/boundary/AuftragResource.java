@@ -91,6 +91,9 @@ public class AuftragResource {
                     .build();
         }
 
+        String eingangsdatumStr = newAuftrag.getEingangsdatum() != null ? newAuftrag.getEingangsdatum().toString() : "heute";
+
+
         String selfLink = uriInfo.getAbsolutePathBuilder().path(Long.toString(newAuftrag.getId())).build().toString();
         JsonObject responseJson = Json.createObjectBuilder()
                 .add("data", Json.createObjectBuilder()
@@ -98,7 +101,7 @@ public class AuftragResource {
                         .add("id", newAuftrag.getId())
                         .add("attributes", Json.createObjectBuilder()
                                 .add("beschreibung", newAuftrag.getBeschreibung())
-                                .add("eingangsdatum", newAuftrag.getEingangsdatum().toString())
+                                .add("eingangsdatum", eingangsdatumStr)
                                 .add("schiffURL", newAuftrag.getSchiffURL()))
                         .add("links", Json.createObjectBuilder()
                                 .add("self", selfLink)))
