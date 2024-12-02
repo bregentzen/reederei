@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-12-01T20:08:15.000Z",
+  "__export_date": "2024-12-02T00:00:00.000Z",
   "__export_source": "insomnia.desktop.app:v2024.7.0",
   "resources": [
     {
@@ -76,12 +76,99 @@
       "url": "http://localhost:8080/auftraege",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"beschreibung\": \"New Auftrag\",\n  \"eingangsdatum\": \"2024-12-01T00:00:00.000Z\",\n  \"schiffURL\": \"null\"\n}"
+        "text": "{\n  \"beschreibung\": \"New Auftrag\",\n  \"eingangsdatum\": \"2024-12-01T00:00:00.000Z\",\n  \"schiffURL\": \"http://localhost:8080/schiffe/1\"\n}"
       },
       "_type": "request"
     },
     {
       "_id": "req_3",
+      "created": 0,
+      "description": "",
+      "headers": [],
+      "method": "GET",
+      "modified": 0,
+      "name": "Get Auftrag by ID",
+      "parentId": "fld_1",
+      "parameters": [
+        {
+          "name": "id",
+          "value": "",
+          "description": "Auftrag ID",
+          "disabled": false
+        }
+      ],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/auftraege/:id",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4",
+      "created": 0,
+      "description": "",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "method": "PUT",
+      "modified": 0,
+      "name": "Update Auftrag",
+      "parentId": "fld_1",
+      "parameters": [
+        {
+          "name": "id",
+          "value": "",
+          "description": "Auftrag ID",
+          "disabled": false
+        }
+      ],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/auftraege/:id",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"beschreibung\": \"Updated Auftrag\",\n  \"eingangsdatum\": \"2024-12-02T00:00:00.000Z\",\n  \"schiffURL\": \"http://localhost:8080/schiffe/2\"\n}"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_5",
+      "created": 0,
+      "description": "",
+      "headers": [],
+      "method": "DELETE",
+      "modified": 0,
+      "name": "Delete Auftrag",
+      "parentId": "fld_1",
+      "parameters": [
+        {
+          "name": "id",
+          "value": "",
+          "description": "Auftrag ID",
+          "disabled": false
+        }
+      ],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/auftraege/:id",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6",
       "created": 0,
       "description": "",
       "headers": [
@@ -106,6 +193,32 @@
         "mimeType": "application/json",
         "text": "{\n  \"name\": \"Neues Schiff\",\n  \"gebucht\": false\n}"
       },
+      "_type": "request"
+    },
+    {
+      "_id": "req_7",
+      "created": 0,
+      "description": "",
+      "headers": [],
+      "method": "GET",
+      "modified": 0,
+      "name": "Get Schiff by ID",
+      "parentId": "fld_1",
+      "parameters": [
+        {
+          "name": "id",
+          "value": "",
+          "description": "Schiff ID",
+          "disabled": false
+        }
+      ],
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://localhost:8080/schiffe/:id",
       "_type": "request"
     }
   ]
