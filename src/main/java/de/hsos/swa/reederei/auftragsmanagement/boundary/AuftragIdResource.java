@@ -1,8 +1,10 @@
 package de.hsos.swa.reederei.auftragsmanagement.boundary;
 
+import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTO;
 import de.hsos.swa.reederei.auftragsmanagement.boundary.dto.AuftragWebDTOId;
 import de.hsos.swa.reederei.auftragsmanagement.entity.AuftragService;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -16,6 +18,7 @@ public class AuftragIdResource {
     AuftragService auftragService;
 
     @GET
+    @Transactional
     @Path("/{id}")
     public Response getAuftrag(@PathParam("id") long id) {
         AuftragWebDTOId auftrag = auftragService.getAuftrag(id);
@@ -28,8 +31,9 @@ public class AuftragIdResource {
     }
 
     @PUT
+    @Transactional
     @Path("/{id}")
-    public Response updateAuftrag(@PathParam("id") long id, AuftragWebDTOId auftrag) {
+    public Response updateAuftrag(@PathParam("id") long id, AuftragWebDTO auftrag) {
         AuftragWebDTOId updatedAuftrag = auftragService.updateAuftrag(id, auftrag);
 
         if(updatedAuftrag == null) {
@@ -40,6 +44,7 @@ public class AuftragIdResource {
     }
 
     @DELETE
+    @Transactional
     @Path("/{id}")
     public Response deleteAuftrag(@PathParam("id") long id) {
        boolean isDeleted =  auftragService.deleteAuftrag(id);

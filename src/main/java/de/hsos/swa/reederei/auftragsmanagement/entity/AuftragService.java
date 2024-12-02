@@ -61,8 +61,9 @@ public class AuftragService {
         return auftragVerwaltung.deleteAuftrag(id);
     }
 
-    public AuftragWebDTOId updateAuftrag(Long id, AuftragWebDTOId auftrag) {
-        Auftrag auftragEntity = toEntityWithId(auftrag);
+    public AuftragWebDTOId updateAuftrag(Long id, AuftragWebDTO auftrag) {
+        AuftragWebDTOId auftragWebDTOId = new AuftragWebDTOId(id, auftrag.getBeschreibung(), auftrag.getEingangsdatum(), auftrag.getSchiffURL());
+        Auftrag auftragEntity = toEntityWithId(auftragWebDTOId);
         Optional<Auftrag> updatedAuftrag = auftragVerwaltung.updateAuftrag(id, auftragEntity);
         return updatedAuftrag.map(this::toDTOwithId).orElse(null);
     }
