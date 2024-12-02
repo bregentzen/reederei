@@ -1,0 +1,109 @@
+{
+  "_type": "workspace",
+  "name": "Reederei Management",
+  "scope": "collection",
+  "_id": "wrk_reederei_management",
+  "children": [
+    {
+      "_type": "request_group",
+      "name": "Auftraege",
+      "_id": "grp_auftraege",
+      "children": [
+        {
+          "_type": "request",
+          "name": "Get All Auftraege",
+          "_id": "req_get_all_auftraege",
+          "method": "GET",
+          "url": "http://localhost:8080/auftraege",
+          "headers": [],
+          "authentication": {}
+        },
+        {
+          "_type": "request",
+          "name": "Create Auftrag",
+          "_id": "req_create_auftrag",
+          "method": "POST",
+          "url": "http://localhost:8080/auftraege",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mimeType": "application/json",
+            "text": "{\n  \"beschreibung\": \"Testauftrag\",\n  \"eingangsdatum\": \"2023-12-01\",\n  \"schiffURL\": \"http://localhost:8080/schiffe/1\"\n}"
+          }
+        },
+        {
+          "_type": "request",
+          "name": "Get Auftrag by ID",
+          "_id": "req_get_auftrag_by_id",
+          "method": "GET",
+          "url": "http://localhost:8080/auftraege/:id",
+          "headers": [],
+          "authentication": {}
+        },
+        {
+          "_type": "request",
+          "name": "Update Auftrag",
+          "_id": "req_update_auftrag",
+          "method": "PUT",
+          "url": "http://localhost:8080/auftraege/:id",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mimeType": "application/json",
+            "text": "{\n  \"beschreibung\": \"Updated Auftrag\",\n  \"eingangsdatum\": \"2023-12-02\",\n  \"schiffURL\": \"http://localhost:8080/schiffe/2\"\n}"
+          }
+        },
+        {
+          "_type": "request",
+          "name": "Delete Auftrag",
+          "_id": "req_delete_auftrag",
+          "method": "DELETE",
+          "url": "http://localhost:8080/auftraege/:id",
+          "headers": [],
+          "authentication": {}
+        }
+      ]
+    },
+    {
+      "_type": "request_group",
+      "name": "Schiffe",
+      "_id": "grp_schiffe",
+      "children": [
+        {
+          "_type": "request",
+          "name": "Create Schiff",
+          "_id": "req_create_schiff",
+          "method": "POST",
+          "url": "http://localhost:8080/schiffe",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mimeType": "application/json",
+            "text": "{\n  \"name\": \"TestSchiff\",\n  \"gebucht\": true\n}"
+          }
+        },
+        {
+          "_type": "request",
+          "name": "Get Schiff by ID",
+          "_id": "req_get_schiff_by_id",
+          "method": "GET",
+          "url": "http://localhost:8080/schiffe/:id",
+          "headers": [],
+          "authentication": {}
+        }
+      ]
+    }
+  ]
+}
